@@ -14,11 +14,20 @@ export class CartlistService {
   }
 
   addToCart(product: Product): void {
-    this.cartItemList.push(product);
+    let found = this.cartItemList
+      .map(function (e) {
+        return e.name;
+      })
+      .indexOf(product.name);
+    if (found === -1) {
+      this.cartItemList.push(product);
+      alert(`${product.name} added to the cart!`);
+    } else alert(`${product.name} already added!`);
   }
 
   removeFromCart(product: Product): Product[] {
     this.cartItemList = this.cartItemList.filter((p) => p.id !== product.id);
+    alert(`${product.name} removed from the cart!`);
     return this.cartItemList;
   }
 
