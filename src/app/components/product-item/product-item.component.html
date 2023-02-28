@@ -1,0 +1,19 @@
+<div class="product-container">
+  <a
+    routerLink="/products/{{ product.id }}"
+    routerLinkActive="router-link-active"
+  >
+    <img
+      class="product-image"
+      src="{{ product.url }}"
+      alt="{{ product.name }}"
+    />
+  </a>
+  <h2>{{ product.name }}</h2>
+  <p>{{ product.price | currency : "USD" }}</p>
+  <p *ngIf="path == '/cart'">Amount: {{ product.selectedqty }}</p>
+  <app-addtocart
+    *ngIf="path == '/products'"
+    [product]="product"
+  ></app-addtocart>
+</div>

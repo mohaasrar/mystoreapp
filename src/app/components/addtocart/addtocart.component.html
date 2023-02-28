@@ -1,0 +1,12 @@
+<form class="addcartform" (ngSubmit)="addToCart(product)" #form="ngForm">
+  <select class="form-control" name="selectedqty" [(ngModel)]="selectedqty">
+    <option value="0" disabled selected><p>Amount</p></option>
+    <option *ngFor="let number of stockbalance" value="{{ number }}">
+      {{ number }}
+    </option>
+  </select>
+
+  <button type="submit" class="addcartbtn" [disabled]="selectedqty < 1">
+    Add to Cart
+  </button>
+</form>

@@ -1,0 +1,23 @@
+<div class="cart-container">
+  <a routerLink="/products/{{ cartItem.id }}">
+    <img src="{{ cartItem.url }}" alt="{{ cartItem.name }}" />
+  </a>
+  <div class="cart-item">
+    <div class="cart-item-details">
+      <h3 class="item-name">{{ cartItem.name }}</h3>
+      <p class="item-price">{{ cartItem.price | currency : "USD" }}</p>
+      <p class="item-amount">
+        Amount:
+        <input
+          class="form-control selector"
+          type="number"
+          min="1"
+          max="{{ cartItem.stockbalance }}"
+          name="cartItem.selectedqty"
+          [(ngModel)]="cartItem.selectedqty"
+        />
+      </p>
+    </div>
+    <button class="remove" (click)="removeFromCart(cartItem)">Remove</button>
+  </div>
+</div>
