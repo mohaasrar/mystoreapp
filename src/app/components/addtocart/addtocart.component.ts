@@ -40,8 +40,5 @@ export class AddtocartComponent {
   addToCart(product: Product): void {
     this.product.selectedqty = this.selectedqty;
     this.cartlistService.addToCart(product);
-    alert(
-      `${this.product.name} added to the cart!\nAmount: ${this.selectedqty}`
-    );
   }
 }
