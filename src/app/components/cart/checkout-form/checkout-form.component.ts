@@ -10,6 +10,9 @@ export class CheckoutFormComponent implements OnInit {
   fullName = '';
   address = '';
   cardNumber = '';
+  fullNameError: boolean = false;
+  addressError: boolean = false;
+  carNumberError: boolean = false;
 
   constructor(private router: Router) {}
 
@@ -20,5 +23,29 @@ export class CheckoutFormComponent implements OnInit {
       'confirmation',
       { fullName: this.fullName, address: this.address },
     ]);
+  }
+
+  validateFullName() {
+    if (!this.fullName || this.fullName.length < 3) {
+      this.fullNameError = true;
+    } else {
+      this.fullNameError = false;
+    }
+  }
+
+  validateCardNumber() {
+    if (!this.cardNumber || this.cardNumber.length < 16) {
+      this.carNumberError = true;
+    } else {
+      this.carNumberError = false;
+    }
+  }
+
+  validateAddress() {
+    if (!this.address || this.address.length < 6) {
+      this.addressError = true;
+    } else {
+      this.addressError = false;
+    }
   }
 }
